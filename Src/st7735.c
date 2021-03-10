@@ -1,7 +1,7 @@
 /*
  * st7735.c
  *
- *  Created on: 16 бер. 2019 р.
+ *  Created on: 16 пїЅпїЅпїЅ. 2019 пїЅ.
  *      Author: Andriy Honcharenko
  *        Blog: https://stm32withoutfear.blogspot.com
  */
@@ -9,14 +9,14 @@
 #include "st7735.h"
 #include "stdlib.h"
 
-#define TFT_BL_H()	ST7735_BL_GPIO_Port -> BSRR = ST7735_BL_Pin
-#define TFT_BL_L()	ST7735_BL_GPIO_Port -> BRR 	= ST7735_BL_Pin
-#define TFT_CS_H()	ST7735_CS_GPIO_Port -> BSRR = ST7735_CS_Pin
-#define TFT_CS_L()	ST7735_CS_GPIO_Port -> BRR 	= ST7735_CS_Pin
-#define TFT_DC_D()	ST7735_DC_GPIO_Port -> BSRR = ST7735_DC_Pin
-#define TFT_DC_C()	ST7735_DC_GPIO_Port -> BRR 	= ST7735_DC_Pin
-#define TFT_RES_H()	ST7735_RES_GPIO_Port -> BSRR = ST7735_RES_Pin
-#define TFT_RES_L()	ST7735_RES_GPIO_Port -> BRR	 = ST7735_RES_Pin
+#define TFT_BL_H()	HAL_GPIO_WritePin(ST7735_BL_GPIO_Port, ST7735_BL_Pin, GPIO_PIN_SET)
+#define TFT_BL_L()	HAL_GPIO_WritePin(ST7735_BL_GPIO_Port, ST7735_BL_Pin, GPIO_PIN_RESET)
+#define TFT_CS_H()	HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_SET)
+#define TFT_CS_L()	HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_RESET)
+#define TFT_DC_D()	HAL_GPIO_WritePin(ST7735_DC_GPIO_Port, ST7735_DC_Pin, GPIO_PIN_SET)
+#define TFT_DC_C()	HAL_GPIO_WritePin(ST7735_DC_GPIO_Port, ST7735_DC_Pin, GPIO_PIN_RESET)
+#define TFT_RES_H()	HAL_GPIO_WritePin(ST7735_RES_GPIO_Port, ST7735_RES_Pin, GPIO_PIN_SET)
+#define TFT_RES_L()	HAL_GPIO_WritePin(ST7735_RES_GPIO_Port, ST7735_RES_Pin, GPIO_PIN_RESET)
 
 #define ST7735_COLOR565(r, g, b) (((r & 0xF8) << 8) | ((g & 0xFC) << 3) | ((b & 0xF8) >> 3))
 #define SWAP_INT16_T(a, b) { int16_t t = a; a = b; b = t; }
