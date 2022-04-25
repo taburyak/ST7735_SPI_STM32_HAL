@@ -338,6 +338,30 @@ void ST7735_DrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint
     TFT_CS_H();
 }
 
+void ST7735_DrawTouchGFX(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint16_t* data)
+{
+    if((x >= _width) || (y >= _height)) return;
+    if((x + w - 1) >= _width) return;
+    if((y + h - 1) >= _height) return;
+
+    TFT_CS_L();
+    ST7735_SetAddressWindow(x, y, x+w-1, y+h-1);
+
+    uint32_t size = w * h;
+    uint8_t colorBytes[size][2];
+
+    for (uint32_t i = 0; i < size; i++)
+	{
+		colorBytes[i][0] = (*data & 0xFF00) >> 8;
+		colorBytes[i][1] = *data & 0x00FF;
+		data++;
+	}
+
+    TFT_DC_D();
+	ST7735_WriteData((uint8_t*) &colorBytes, size * 2);
+    TFT_CS_H();
+}
+
 void ST7735_InvertColors(bool invert)
 {
 	TFT_CS_L();

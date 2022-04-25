@@ -1,7 +1,7 @@
 /*
  * st7735_cfg.h
  *
- *  Created on: 16 бер. 2019 р.
+ *  Created on: 16 пїЅпїЅпїЅ. 2019 пїЅ.
  *      Author: Andriy Honcharenko
  *        Blog: https://stm32withoutfear.blogspot.com
  */
@@ -11,7 +11,7 @@
 
 #include "main.h"
 
-#define ST7735_SPI_PORT hspi1	//hspi1, hspi2, hspi3...
+#define ST7735_SPI_PORT hspi2	//hspi1, hspi2, hspi3...
 //#define USE_SPI_DMA			//if used DMA for SPI bus
 
 //#define ST7735_1_8_DEFAULT_ORIENTATION	// AliExpress/eBay 1.8" display, default orientation
